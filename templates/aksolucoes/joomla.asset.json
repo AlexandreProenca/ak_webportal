@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "aksolucoes",
+  "version": "1.0.0",
+  "description": "Web assets for the AK Soluções site template.",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "template.aksolucoes.fonts",
+      "description": "Self-hosted webfonts (Montserrat, Inter, JetBrains Mono).",
+      "type": "style",
+      "uri": "fonts/fonts.css",
+      "version": "auto"
+    },
+    {
+      "name": "template.aksolucoes.base",
+      "description": "Main template stylesheet.",
+      "type": "style",
+      "uri": "css/template.css",
+      "version": "auto",
+      "dependencies": [
+        "template.aksolucoes.fonts"
+      ]
+    },
+    {
+      "name": "template.aksolucoes.lucide",
+      "description": "Self-hosted Lucide icon library.",
+      "type": "script",
+      "uri": "js/lucide.min.js",
+      "version": "auto",
+      "attributes": {
+        "defer": true
+      }
+    },
+    {
+      "name": "template.aksolucoes.main",
+      "description": "Template behaviour (header, drawer, gallery, reveal, FAB).",
+      "type": "script",
+      "uri": "js/template.js",
+      "version": "auto",
+      "attributes": {
+        "defer": true
+      },
+      "dependencies": [
+        "template.aksolucoes.lucide"
+      ]
+    }
+  ]
+}

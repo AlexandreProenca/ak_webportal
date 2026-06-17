@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="5.0" type="template" client="site" method="upgrade">
+	<name>AK Soluções</name>
+	<creationDate>2026-06</creationDate>
+	<author>AK Soluções em Tecnologia</author>
+	<authorEmail>contato@aksolucoes.com.br</authorEmail>
+	<authorUrl>https://www.aksolucoes.com.br</authorUrl>
+	<copyright>(C) 2026 AK Soluções em Tecnologia</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.0.0</version>
+	<description>TPL_AKSOLUCOES_XML_DESCRIPTION</description>
+	<inheritable>0</inheritable>
+
+	<files>
+		<filename>templateDetails.xml</filename>
+		<filename>index.php</filename>
+		<filename>error.php</filename>
+		<filename>offline.php</filename>
+		<filename>component.php</filename>
+		<filename>joomla.asset.json</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>template_preview.png</filename>
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>fonts</folder>
+		<folder>images</folder>
+		<folder>language</folder>
+		<folder>docs</folder>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/tpl_aksolucoes.ini</language>
+		<language tag="en-GB">en-GB/tpl_aksolucoes.sys.ini</language>
+		<language tag="pt-BR">pt-BR/tpl_aksolucoes.ini</language>
+		<language tag="pt-BR">pt-BR/tpl_aksolucoes.sys.ini</language>
+	</languages>
+
+	<positions>
+		<position>topbar</position>
+		<position>menu</position>
+		<position>hero</position>
+		<position>main-top</position>
+		<position>main-bottom</position>
+		<position>sidebar-right</position>
+		<position>bottom-a</position>
+		<position>bottom-b</position>
+		<position>footer</position>
+		<position>footer-bottom</position>
+		<position>debug</position>
+		<position>error-404</position>
+	</positions>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="TPL_AKSOLUCOES_FIELDSET_BRAND">
+				<field
+					name="logoMark"
+					type="media"
+					directory="templates/aksolucoes/images/logos"
+					label="TPL_AKSOLUCOES_LOGO_MARK_LABEL"
+					description="TPL_AKSOLUCOES_LOGO_MARK_DESC"
+					default="templates/aksolucoes/images/logos/logo-mark.png"
+					filter="string"
+				/>
+				<field
+					name="logoWord"
+					type="media"
+					directory="templates/aksolucoes/images/logos"
+					label="TPL_AKSOLUCOES_LOGO_WORD_LABEL"
+					description="TPL_AKSOLUCOES_LOGO_WORD_DESC"
+					default="templates/aksolucoes/images/logos/logo-wordmark.svg"
+					filter="string"
+				/>
+				<field
+					name="brandColor"
+					type="color"
+					label="TPL_AKSOLUCOES_BRAND_COLOR_LABEL"
+					default="#0e2a5c"
+					filter="string"
+				/>
+				<field
+					name="accentColor"
+					type="color"
+					label="TPL_AKSOLUCOES_ACCENT_COLOR_LABEL"
+					default="#1fb6ee"
+					filter="string"
+				/>
+				<field
+					name="accentColor2"
+					type="color"
+					label="TPL_AKSOLUCOES_ACCENT_COLOR2_LABEL"
+					default="#8dc63f"
+					filter="string"
+				/>
+			</fieldset>
+
+			<fieldset name="contact" label="TPL_AKSOLUCOES_FIELDSET_CONTACT">
+				<field
+					name="whatsapp"
+					type="text"
+					label="TPL_AKSOLUCOES_WHATSAPP_LABEL"
+					description="TPL_AKSOLUCOES_WHATSAPP_DESC"
+					default="5541991387368"
+					filter="string"
+				/>
+				<field
+					name="phoneComercial"
+					type="text"
+					label="TPL_AKSOLUCOES_PHONE_COMERCIAL_LABEL"
+					default="+55 41 99156-9730"
+					filter="string"
+				/>
+				<field
+					name="phoneTecnico"
+					type="text"
+					label="TPL_AKSOLUCOES_PHONE_TECNICO_LABEL"
+					default="+55 41 99155-6440"
+					filter="string"
+				/>
+				<field
+					name="email"
+					type="text"
+					label="TPL_AKSOLUCOES_EMAIL_LABEL"
+					default="contato@aksolucoes.com.br"
+					filter="string"
+				/>
+			</fieldset>
+
+			<fieldset name="layout" label="TPL_AKSOLUCOES_FIELDSET_LAYOUT">
+				<field
+					name="showTopbar"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="TPL_AKSOLUCOES_SHOW_TOPBAR_LABEL"
+					default="0"
+					filter="integer"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+					name="showLangToggle"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="TPL_AKSOLUCOES_SHOW_LANGTOGGLE_LABEL"
+					description="TPL_AKSOLUCOES_SHOW_LANGTOGGLE_DESC"
+					default="0"
+					filter="integer"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+					name="showFab"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="TPL_AKSOLUCOES_SHOW_FAB_LABEL"
+					default="1"
+					filter="integer"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,13 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 110" fill="none" font-family="Montserrat, sans-serif">
+  <defs>
+    <linearGradient id="akgrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8DC63F"></stop>
+      <stop offset="50%" stop-color="#1FB6EE"></stop>
+      <stop offset="100%" stop-color="#0E2A5C"></stop>
+    </linearGradient>
+  </defs>
+  <text x="0" y="78" font-size="84" font-weight="700" fill="url(#akgrad)" letter-spacing="-2">AK</text>
+  <line x1="142" y1="22" x2="142" y2="88" stroke="#0E2A5C" stroke-width="3" stroke-linecap="round"></line>
+  <text x="160" y="78" font-size="64" font-weight="500" fill="#0E2A5C" letter-spacing="-1">Soluções</text>
+</svg>
