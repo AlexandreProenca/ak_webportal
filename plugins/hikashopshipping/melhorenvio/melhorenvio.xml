@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="5.0" method="upgrade" group="hikashopshipping">
+	<name>PLG_HIKASHOPSHIPPING_MELHORENVIO</name>
+	<creationDate>August 2026</creationDate>
+	<version>1.0.2</version>
+	<author>AK Soluções</author>
+	<authorEmail>contato@aksolucoes.com.br</authorEmail>
+	<authorUrl>https://www.aksolucoes.com.br</authorUrl>
+	<copyright>(C) 2026 AK Soluções em Tecnologia</copyright>
+	<license>GNU General Public License version 3 or later</license>
+	<description>PLG_HIKASHOPSHIPPING_MELHORENVIO_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<filename plugin="melhorenvio">melhorenvio.php</filename>
+		<filename>script.php</filename>
+		<filename>index.html</filename>
+		<filename>README.md</filename>
+		<folder>src</folder>
+		<folder>sql</folder>
+	</files>
+	<languages folder="language">
+		<language tag="pt-BR">pt-BR/plg_hikashopshipping_melhorenvio.ini</language>
+		<language tag="pt-BR">pt-BR/plg_hikashopshipping_melhorenvio.sys.ini</language>
+		<language tag="en-GB">en-GB/plg_hikashopshipping_melhorenvio.ini</language>
+		<language tag="en-GB">en-GB/plg_hikashopshipping_melhorenvio.sys.ini</language>
+	</languages>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<params addpath="/components/com_hikashop/params">
+		<param name="pluginoptions" type="pluginoptions" default="plugin" label="hikashop" description="HikaShop options" />
+	</params>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikashop/fields">
+			<fieldset name="basic">
+				<field id="pluginoptions" name="pluginoptions" type="pluginoptions" label="hikashop" description="HikaShop options" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
