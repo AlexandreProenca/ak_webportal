@@ -10,10 +10,25 @@
 
 \defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Uri\Uri;
 
 /** @var \Joomla\CMS\Document\HtmlDocument $this */
 
+$app   = Factory::getApplication();
+$input = $app->getInput();
+$user  = $app->getIdentity();
+
+// HikaShop refreshes product variants through tmpl=component requests. Keep
+// the context classes used by index.php so scoped store styles still apply.
+$option = $input->getCmd('option', '');
+$view   = $input->getCmd('view', '');
+$bodyClass = trim(
+	'site tmpl-component'
+	. ($option !== '' ? ' ' . $option : '')
+	. ($view !== '' ? ' view-' . $view : '')
+	. ($user !== null && !(bool) $user->guest ? ' is-logged-in' : ' is-guest')
+);
 $this->addStyleSheet(Uri::root(true) . '/templates/aksolucoes/fonts/fonts.css', ['version' => 'auto']);
 $this->addStyleSheet(Uri::root(true) . '/templates/aksolucoes/css/template.css', ['version' => 'auto']);
 
@@ -30,7 +45,7 @@ $this->addHeadLink($tplPath . '/images/logos/favicon-32.png', 'icon', 'rel', ['t
 	<jdoc:include type="scripts" />
 </head>
 
-<body class="site tmpl-component">
+<body class="<?php echo htmlspecialchars($bodyClass, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>">
 	<main id="top" class="subpage-main">
 		<div class="container subpage-inner">
 			<jdoc:include type="message" />

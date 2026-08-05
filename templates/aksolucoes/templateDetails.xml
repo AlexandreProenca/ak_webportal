@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="5.0" type="template" client="site" method="upgrade">
 	<name>AK Soluções</name>
+	<element>aksolucoes</element>
 	<creationDate>2026-06</creationDate>
 	<author>AK Soluções em Tecnologia</author>
 	<authorEmail>contato@aksolucoes.com.br</authorEmail>
 	<authorUrl>https://www.aksolucoes.com.br</authorUrl>
 	<copyright>(C) 2026 AK Soluções em Tecnologia</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<description>TPL_AKSOLUCOES_XML_DESCRIPTION</description>
 	<inheritable>0</inheritable>
 
