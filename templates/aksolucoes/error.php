@@ -37,7 +37,7 @@ $message = $code === 404
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0e2a5c">
 	<title><?php echo $code; ?> — <?php echo htmlspecialchars($app->get('sitename'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></title>
-	<link rel="icon" href="<?php echo $tplPath; ?>/images/logos/logo-mark.svg" type="image/svg+xml">
+	<link rel="icon" href="<?php echo $tplPath; ?>/images/logos/favicon-32.png" type="image/png">
 	<link rel="stylesheet" href="<?php echo $tplPath; ?>/fonts/fonts.css">
 	<style>
 		:root {

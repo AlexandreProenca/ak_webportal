@@ -1,0 +1,90 @@
+##
+# AK Soluções — .htaccess endurecido (base: Joomla 5.4 htaccess.txt)
+# Regras extras: HTTPS forçado, bloqueio de arquivos sensíveis, bloqueio de
+# execução de PHP em pastas de mídia/upload e cabeçalhos de segurança.
+# A seção GZIP do htaccess.txt foi omitida de propósito (o nginx do host já comprime).
+##
+
+# "Options" removido: o AllowOverride deste host não permite a diretiva (gerava erro 500).
+# A listagem de diretórios é bloqueada pelo IndexIgnore abaixo.
+
+## No directory listings
+<IfModule mod_autoindex.c>
+	IndexIgnore *
+</IfModule>
+
+## Cabeçalhos de segurança
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set X-Frame-Options "SAMEORIGIN"
+	Header always set Referrer-Policy "strict-origin-when-cross-origin"
+	Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+	Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+</IfModule>
+
+## Disable inline JavaScript when directly opening SVG files or embedding them with the object-tag
+<FilesMatch "\.svg$">
+  <IfModule mod_headers.c>
+    Header always set Content-Security-Policy "script-src 'none'"
+  </IfModule>
+</FilesMatch>
+
+## Bloqueia acesso direto a arquivos sensíveis
+<FilesMatch "^(configuration\.php|htaccess\.txt|web\.config\.txt|README\.txt|LICENSE\.txt|joomla\.xml|composer\.(json|lock)|package\.json|\.htaccess)$">
+	Require all denied
+</FilesMatch>
+<FilesMatch "\.(log|ini|sh|sql|bak|env)$">
+	Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	## Begin - HTTPS forçado (seguro atrás de proxy que envia X-Forwarded-Proto)
+	RewriteCond %{HTTPS} !=on
+	RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+	RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+	## End - HTTPS forçado
+
+	## Begin - Bloqueia execução de PHP em pastas de mídia/upload/cache
+	RewriteRule ^(images|files|media|cache|tmp|administrator/logs|administrator/cache)/.*\.php$ - [F,L]
+	## End - Bloqueia execução de PHP
+
+	## Begin - Rewrite rules to block out some common exploits.
+	# Block any script trying to base64_encode data within the URL.
+	RewriteCond %{QUERY_STRING} base64_encode[^(]*\([^)]*\) [OR]
+	# Block any script that includes a <script> tag in URL.
+	RewriteCond %{QUERY_STRING} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC,OR]
+	# Block any script trying to set a PHP GLOBALS variable via URL.
+	RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+	# Block any script trying to modify a _REQUEST variable via URL.
+	RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+	# Return 403 Forbidden header and show the content of the root home page
+	RewriteRule .* index.php [F]
+	## End - Rewrite rules to block out some common exploits.
+
+	## Begin - Joomla! core SEF Section.
+	#
+	# PHP FastCGI fix for HTTP Authorization, required for the API application
+	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+	# -- SEF URLs for the API application
+	RewriteCond %{REQUEST_URI} ^/api/
+	RewriteCond %{REQUEST_URI} !^/api/index\.php
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule .* api/index.php [L]
+	# -- SEF URLs for the public frontend application
+	RewriteCond %{REQUEST_URI} !^/index\.php
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule .* index.php [L]
+	#
+	## End - Joomla! core SEF Section.
+</IfModule>
+
+## These directives are only enabled if the Apache mod_rewrite module is disabled
+<IfModule !mod_rewrite.c>
+	<IfModule mod_alias.c>
+		RedirectMatch 302 ^/$ /index.php/
+	</IfModule>
+</IfModule>

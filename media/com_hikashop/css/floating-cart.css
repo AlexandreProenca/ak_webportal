@@ -1,0 +1,100 @@
+/**
+ * @package    HikaShop
+ * @version    6.5.0
+ * @author     hikashop.com
+ * @copyright  (C) 2010-2026 HIKARI SOFTWARE. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+
+
+.hikashop_floating_cart_wrapper {
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	z-index: 9998;
+}
+
+.hikashop_floating_cart_wrapper:not(:has(.hikashop_small_cart_checkout_link)) {
+	visibility: hidden;
+	pointer-events: none;
+}
+
+
+.hikashop_floating_cart_wrapper .hikashop_checkout_loading_elem,
+.hikashop_floating_cart_wrapper .hikashop_checkout_loading_spinner {
+	display: none;
+}
+
+
+
+
+
+.hikashop_floating_cart_wrapper .hikashop_small_cart_checkout_link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: #3b7ddd;
+	color: #fff;
+	text-decoration: none;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	cursor: pointer;
+	position: relative;
+}
+
+.hikashop_floating_cart_wrapper .hikashop_small_cart_checkout_link:hover {
+	transform: scale(1.1);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hikashop_floating_cart_wrapper .hikashop_small_cart_checkout_link:active {
+	transform: scale(0.97);
+}
+
+
+.hikashop_floating_cart_wrapper .hikashop_small_cart_total_title {
+	font-size: 0;
+	line-height: 0;
+	color: transparent;
+}
+
+.hikashop_floating_cart_wrapper .hikashop_small_cart_total_title::before {
+	content: '';
+	display: block;
+	width: 24px;
+	height: 24px;
+	background: currentColor;
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/%3E%3C/svg%3E");
+	-webkit-mask-size: contain;
+	-webkit-mask-repeat: no-repeat;
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/%3E%3C/svg%3E");
+	mask-size: contain;
+	mask-repeat: no-repeat;
+	color: #fff;
+}
+
+
+.hikashop_floating_cart_wrapper .hikashop_cart_module_product_icon_title {
+	display: none;
+}
+
+
+
+
+
+.hikashop_floating_cart_wrapper .hikashop_cart_dropdown_container {
+	position: static;
+}
+
+
+.hikashop_floating_cart_wrapper .hikashop_small_cart_clean_link,
+.hikashop_floating_cart_wrapper .hikashop_checkout_cart_print_link {
+	display: none;
+}
+
+.hikashop_floating_cart_wrapper .clear_both {
+	display: none;
+}

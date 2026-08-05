@@ -1,0 +1,30 @@
+<?php
+/**
+ * @package	HikaShop
+ * @version	6.5.0
+ * @author	hikashop.com
+ * @copyright	(C) 2010-2026 HIKARI SOFTWARE. All rights reserved.
+ * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+defined('_JEXEC') or defined('ABSPATH') or die('Restricted access');
+// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+?><?php
+class hikashopZoneType extends hikashopType{
+	function load($form=false){
+		$this->values = array();
+		if(!$form){
+			$this->values[] = JHTML::_('select.option', '', JText::_('ALL_ZONES') );
+		}
+		$this->values[] = JHTML::_('select.option', 'country',JText::_('COUNTRIES'));
+		$this->values[] = JHTML::_('select.option', 'state',JText::_('STATES'));
+		$this->values[] = JHTML::_('select.option', 'tax',JText::_('TAX_ZONES'));
+		$this->values[] = JHTML::_('select.option', 'ship',JText::_('SHIP_ZONES'));
+		$this->values[] = JHTML::_('select.option', 'discount',JText::_('DISCOUNT_ZONES'));
+		$this->values[] = JHTML::_('select.option', 'payment',JText::_('PAYMENT_ZONES'));
+	}
+	function display($map,$value,$form=false){
+		$this->load($form);
+		$dynamic = ($form ? '' : 'onchange="document.adminForm.submit( );"');
+		return JHTML::_('select.genericlist',   $this->values, $map, 'class="custom-select" size="1"'. $dynamic, 'value', 'text', $value );
+	}
+}

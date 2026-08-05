@@ -28,7 +28,7 @@ $sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES | ENT_SUBSTITUTE,
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0e2a5c">
 	<title><?php echo $sitename; ?></title>
-	<link rel="icon" href="<?php echo $tplPath; ?>/images/logos/logo-mark.svg" type="image/svg+xml">
+	<link rel="icon" href="<?php echo $tplPath; ?>/images/logos/favicon-32.png" type="image/png">
 	<link rel="stylesheet" href="<?php echo $tplPath; ?>/fonts/fonts.css">
 	<jdoc:include type="head" />
 	<style>
@@ -76,7 +76,7 @@ $sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES | ENT_SUBSTITUTE,
 
 <body>
 	<div class="offline-card">
-		<img src="<?php echo $tplPath; ?>/images/logos/logo-mark.svg" alt="<?php echo $sitename; ?>">
+		<img src="<?php echo $tplPath; ?>/images/logos/logo-mark.png" alt="<?php echo $sitename; ?>">
 		<h1><?php echo $sitename; ?></h1>
 		<p><?php echo $app->get('offline_message') ? htmlspecialchars($app->get('offline_message'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') : Text::_('TPL_AKSOLUCOES_OFFLINE_MESSAGE'); ?></p>
 

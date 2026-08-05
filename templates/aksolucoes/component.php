@@ -14,12 +14,12 @@ use Joomla\CMS\Uri\Uri;
 
 /** @var \Joomla\CMS\Document\HtmlDocument $this */
 
-$wa = $this->getWebAssetManager();
-$wa->useStyle('template.aksolucoes.base');
+$this->addStyleSheet(Uri::root(true) . '/templates/aksolucoes/fonts/fonts.css', ['version' => 'auto']);
+$this->addStyleSheet(Uri::root(true) . '/templates/aksolucoes/css/template.css', ['version' => 'auto']);
 
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 $tplPath = Uri::root(true) . '/templates/aksolucoes';
-$this->addHeadLink($tplPath . '/images/logos/logo-mark.svg', 'icon', 'rel', ['type' => 'image/svg+xml']);
+$this->addHeadLink($tplPath . '/images/logos/favicon-32.png', 'icon', 'rel', ['type' => 'image/png']);
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">

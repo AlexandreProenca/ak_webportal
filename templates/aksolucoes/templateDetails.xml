@@ -25,6 +25,7 @@
 		<folder>fonts</folder>
 		<folder>images</folder>
 		<folder>language</folder>
+		<folder>html</folder>
 		<folder>docs</folder>
 	</files>
 
@@ -38,12 +39,36 @@
 	<positions>
 		<position>topbar</position>
 		<position>menu</position>
+		<position>member-area</position>
 		<position>hero</position>
+		<position>pillars</position>
 		<position>main-top</position>
+		<position>showcase</position>
+		<position>about</position>
+		<position>overview</position>
+		<position>contact-center</position>
+		<position>solutions</position>
+		<position>products</position>
+		<position>collaboration</position>
+		<position>specialized</position>
+		<position>gallery</position>
+		<position>process</position>
+		<position>coverage</position>
+		<position>highlights</position>
+		<position>stats</position>
+		<position>partners</position>
+		<position>contact-info</position>
+		<position>contact-form</position>
+		<position>cta</position>
 		<position>main-bottom</position>
 		<position>sidebar-right</position>
 		<position>bottom-a</position>
 		<position>bottom-b</position>
+		<position>footer-brand</position>
+		<position>footer-a</position>
+		<position>footer-b</position>
+		<position>footer-c</position>
+		<position>footer-payments</position>
 		<position>footer</position>
 		<position>footer-bottom</position>
 		<position>debug</position>
@@ -68,7 +93,7 @@
 					directory="templates/aksolucoes/images/logos"
 					label="TPL_AKSOLUCOES_LOGO_WORD_LABEL"
 					description="TPL_AKSOLUCOES_LOGO_WORD_DESC"
-					default="templates/aksolucoes/images/logos/logo-wordmark.svg"
+					default="templates/aksolucoes/images/logos/logo-wordmark.png"
 					filter="string"
 				/>
 				<field

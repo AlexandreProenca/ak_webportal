@@ -1,0 +1,237 @@
+/**
+ * @package    HikaShop
+ * @version    6.5.0
+ * @author     hikashop.com
+ * @copyright  (C) 2010-2026 HIKARI SOFTWARE. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+.address_layout_builder {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.address_layout_rows {
+    min-height: 100px;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px dashed #ccc;
+    padding: 10px;
+}
+
+.address_layout_row {
+    display: flex;
+    flex-wrap: wrap;
+
+
+    margin-bottom: 10px;
+    min-height: 60px;
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 3px;
+
+    box-sizing: border-box;
+}
+
+.address_layout_field {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: grab;
+    position: relative;
+
+    min-width: 50px; 
+    box-sizing: border-box; 
+}
+
+.address_layout_field:hover {
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.address_layout_field.address_layout_field_unpublished {
+    background-color: #fff3cd;
+}
+
+.address_layout_field.sortable-ghost {
+    opacity: 0.5;
+    border: 2px dashed #007bff;
+}
+
+
+.address_layout_field[data-width="1"] { width: 25%; flex: 0 0 25%; max-width: 25%; }
+.address_layout_field[data-width="2"] { width: 50%; flex: 0 0 50%; max-width: 50%; }
+.address_layout_field[data-width="3"] { width: 75%; flex: 0 0 75%; max-width: 75%; }
+.address_layout_field[data-width="4"] { width: 100%; flex: 0 0 100%; max-width: 100%; }
+
+
+.address_layout_unassigned_container .address_layout_field {
+    width: 24%; flex: 1 1 20%; max-width: 300px;
+}
+
+.address_layout_field_handle {
+    float: left;
+    margin-right: 5px;
+}
+
+.address_layout_field_name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.address_layout_field_controls {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.address_layout_field:hover .address_layout_field_controls,
+.address_layout_field:focus-within .address_layout_field_controls {
+    opacity: 1;
+}
+
+.address_layout_resize_btn,
+.address_layout_label_toggle,
+.address_layout_width_btn,
+.address_layout_label_btn {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 11px;
+    margin-left: 2px;
+    width: 22px;
+    height: 22px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; 
+    color: #333; 
+    box-sizing: border-box;
+    line-height: 1; 
+}
+
+.address_layout_width_indicator {
+    font-size: 10px;
+    margin-right: 5px;
+    color: #666;
+}
+
+
+.address_layout_field.hk-label-hidden .address_layout_field_name {
+    text-decoration: line-through;
+    color: #999;
+    opacity: 0.5;
+}
+
+.address_layout_field.hk-label-above .address_layout_field_name {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.address_layout_field.hk-label-inline .address_layout_field_content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.address_layout_field.hk-label-inline .address_layout_field_name {
+    margin-bottom: 0;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+
+.address_layout_resize_handle {
+    cursor: col-resize;
+}
+
+.address_layout_unassigned {
+    background: #fff3cd;
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+
+.address_layout_unassigned_title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.address_layout_unassigned_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    min-height: 50px;
+}
+
+.address_layout_drop_zone {
+    text-align: center;
+    border: 2px dashed #aaa;
+    padding: 20px;
+    cursor: pointer;
+    background: #f9f9f9;
+    color: #666;
+    margin-top: 10px;
+}
+
+.address_layout_drop_zone:hover {
+    background: #eee;
+    color: #333;
+}
+
+
+.address_layout_drop_zone .address_layout_field {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.address_layout_toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #e9ecef;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.address_layout_separator {
+    margin: 0 10px;
+    color: #ccc;
+}
+
+.address_layout_toolbar_left {
+    display: flex;
+    align-items: center;
+}
+
+.address_layout_control_group {
+    display: flex;
+    align-items: center;
+}
+
+.address_layout_control_group label {
+    margin-bottom: 0;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.address_layout_control_group .form-select,
+.address_layout_control_group .chosen-container {
+    display: inline-block !important; 
+    width: auto !important; 
+    min-width: 100px;
+    margin-left: 0;
+    vertical-align: middle;
+}

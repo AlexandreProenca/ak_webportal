@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+	<name>System - HikaShop UCP</name>
+	<creationDate>09 July 2026</creationDate>
+	<version>6.5.0</version>
+	<author>HikaShop</author>
+	<authorEmail>dev@hikashop.com</authorEmail>
+	<authorUrl>http://www.hikashop.com</authorUrl>
+	<copyright>(C) 2010-2026 HIKARI SOFTWARE. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>PLG_SYSTEM_HIKASHOP_UCP_DESC</description>
+	<files>
+		<filename plugin="hikashop_ucp">hikashop_ucp.php</filename>
+		<folder>includes</folder>
+	</files>
+	<media folder="media" destination="plg_system_hikashop_ucp">
+		<folder>js</folder>
+	</media>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_hikashop_ucp.ini</language>
+	</languages>
+	<config>
+		<fields name="params" addfieldpath="/components/com_hikashop/fields">
+			<fieldset name="basic">
+				<field name="api_keys" type="subform" multiple="true" layout="joomla.form.field.subform.repeatable-table" buttons="add,remove,move" label="PLG_HIKASHOP_UCP_API_KEYS" description="PLG_HIKASHOP_UCP_API_KEYS_DESC">
+					<form>
+						<field name="name" type="text" size="20" default="" label="PLG_HIKASHOP_UCP_API_KEY_NAME" />
+						<field name="key" type="text" size="40" default="" label="PLG_HIKASHOP_UCP_API_KEY_VALUE" />
+					</form>
+				</field>
+				<field name="base_path" type="text" size="20" default="/ucp/v1" label="PLG_HIKASHOP_UCP_BASE_PATH" description="PLG_HIKASHOP_UCP_BASE_PATH_DESC" />
+				<field name="mcp_enabled" type="radio" default="0" label="PLG_HIKASHOP_UCP_MCP_ENABLED" description="PLG_HIKASHOP_UCP_MCP_ENABLED_DESC" class="btn-group btn-group-yesno">
+					<option value="0">HIKASHOP_NO</option>
+					<option value="1">HIKASHOP_YES</option>
+				</field>
+				<field name="mcp_slug" showon="mcp_enabled:1" type="text" size="20" default="ucp-mcp" label="PLG_HIKASHOP_UCP_MCP_SLUG" description="PLG_HIKASHOP_UCP_MCP_SLUG_DESC" />
+				<field name="privacy_policy_url" type="text" size="60" default="" label="PLG_HIKASHOP_UCP_PRIVACY_URL" description="PLG_HIKASHOP_UCP_PRIVACY_URL_DESC" />
+				<field name="terms_url" type="text" size="60" default="" label="PLG_HIKASHOP_UCP_TERMS_URL" description="PLG_HIKASHOP_UCP_TERMS_URL_DESC" />
+			</fieldset>
+			<fieldset name="googlepay" label="PLG_HIKASHOP_UCP_GOOGLEPAY_FIELDSET">
+				<field name="gpay_enabled" type="radio" default="0" label="PLG_HIKASHOP_UCP_GPAY_ENABLED" description="PLG_HIKASHOP_UCP_GPAY_ENABLED_DESC" class="btn-group btn-group-yesno">
+					<option value="0">HIKASHOP_NO</option>
+					<option value="1">HIKASHOP_YES</option>
+				</field>
+				<field name="gpay_environment" showon="gpay_enabled:1" type="list" default="TEST" label="PLG_HIKASHOP_UCP_GPAY_ENVIRONMENT" description="PLG_HIKASHOP_UCP_GPAY_ENVIRONMENT_DESC">
+					<option value="TEST">TEST</option>
+					<option value="PRODUCTION">PRODUCTION</option>
+				</field>
+				<field name="gpay_merchant_id" showon="gpay_enabled:1" type="text" size="40" default="" label="PLG_HIKASHOP_UCP_GPAY_MERCHANT_ID" description="PLG_HIKASHOP_UCP_GPAY_MERCHANT_ID_DESC" />
+				<field name="gpay_merchant_name" showon="gpay_enabled:1" type="text" size="40" default="" label="PLG_HIKASHOP_UCP_GPAY_MERCHANT_NAME" description="PLG_HIKASHOP_UCP_GPAY_MERCHANT_NAME_DESC" />
+				<field name="gpay_card_networks" showon="gpay_enabled:1" type="checkboxes" label="PLG_HIKASHOP_UCP_GPAY_CARD_NETWORKS" description="PLG_HIKASHOP_UCP_GPAY_CARD_NETWORKS_DESC">
+					<option value="VISA">Visa</option>
+					<option value="MASTERCARD">Mastercard</option>
+					<option value="AMEX">American Express</option>
+					<option value="DISCOVER">Discover</option>
+					<option value="JCB">JCB</option>
+				</field>
+				<field name="gpay_auth_methods" showon="gpay_enabled:1" type="checkboxes" label="PLG_HIKASHOP_UCP_GPAY_AUTH_METHODS" description="PLG_HIKASHOP_UCP_GPAY_AUTH_METHODS_DESC">
+					<option value="PAN_ONLY">PAN_ONLY</option>
+					<option value="CRYPTOGRAM_3DS">CRYPTOGRAM_3DS</option>
+				</field>
+			</fieldset>
+			<fieldset name="webmcp" label="PLG_HIKASHOP_UCP_WEBMCP_FIELDSET">
+				<field name="webmcp_enabled" type="radio" default="0" label="PLG_HIKASHOP_UCP_WEBMCP_ENABLED" description="PLG_HIKASHOP_UCP_WEBMCP_ENABLED_DESC" class="btn-group btn-group-yesno">
+					<option value="0">HIKASHOP_NO</option>
+					<option value="1">HIKASHOP_YES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

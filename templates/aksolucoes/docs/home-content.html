@@ -1,17 +1,21 @@
 <!--
-  AK Soluções — conteúdo da página inicial.
-  Cole TODO este HTML no corpo de um Artigo do Joomla (editor em modo "Code"/"</>").
-  Defina esse artigo como item de menu "Home" (tipo: Artigo Único) e marque como página inicial.
-  Requer: editor sem filtro de texto (Super User) para preservar <video>, <picture> e data-lucide.
-  Os caminhos assumem o Joomla instalado na raiz do domínio. Em subpasta, prefixe os caminhos.
+  AK Soluções — REFERÊNCIA de design da página inicial (markup completo de todas as seções).
+
+  ATENÇÃO (2026-06): a home em produção NÃO usa mais este arquivo como um único artigo.
+  Ela é montada por MÓDULOS: o artigo "Home" contém só o <section class="hero">, e cada
+  seção abaixo é um módulo "HTML Personalizado" (Custom HTML) publicado em uma posição
+  full-bleed (about, overview, contact-center, solutions, products, collaboration,
+  specialized, gallery, process, partners, coverage, cta), renderizado com style="none".
+
+  Este arquivo serve como fonte do HTML de cada seção (copie o bloco da seção para o
+  módulo correspondente). Use editor "Nenhum"/CodeMirror — o TinyMCE remove <i data-lucide>,
+  <video> e <picture>. Os caminhos assumem o Joomla na raiz do domínio.
 -->
 
 <section class="hero" id="hero" aria-label="AK Soluções">
   <video class="hero-bg" autoplay muted loop playsinline preload="auto"
     poster="/templates/aksolucoes/images/media/hero-poster-desktop.jpg">
-    <source src="/templates/aksolucoes/images/media/hero-mobile.webm" type="video/webm" media="(max-width: 768px)">
-    <source src="/templates/aksolucoes/images/media/hero-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
-    <source src="/templates/aksolucoes/images/media/hero-desktop.webm" type="video/webm">
+    <source src="/templates/aksolucoes/images/media/hero-mobile.mp4" type="video/mp4" media="(max-width: 820px)">
     <source src="/templates/aksolucoes/images/media/hero-desktop.mp4" type="video/mp4">
   </video>
   <div class="hero-shade"></div>
@@ -98,7 +102,6 @@
     <div class="video-shell reveal">
       <video class="promo-video" controls autoplay muted loop playsinline preload="metadata"
         poster="/templates/aksolucoes/images/media/hero-poster-desktop.jpg">
-        <source src="/templates/aksolucoes/images/media/overview.webm" type="video/webm">
         <source src="/templates/aksolucoes/images/media/overview.mp4" type="video/mp4">
       </video>
     </div>

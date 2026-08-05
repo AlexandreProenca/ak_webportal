@@ -25,11 +25,11 @@ class JConfig {
 	public $dbsslcert = '';
 	public $dbsslca = '';
 	public $dbsslcipher = '';
-	public $force_ssl = 0;
+	public $force_ssl = 2;
 	public $live_site = '';
 	public $secret = 'lNMAEKoK4pq7416M';
 	public $gzip = false;
-	public $error_reporting = 'default';
+	public $error_reporting = 'none';
 	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
 	public $offset = 'UTC';
 	public $cors = false;

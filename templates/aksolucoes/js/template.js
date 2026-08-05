@@ -134,7 +134,41 @@
     document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
   }
 
+  // Inject the contact-page map. Kept out of the article body because Joomla's
+  // text filter strips <iframe>; centred on the AK Soluções office address.
+  const mapFrame = document.querySelector(".map-frame");
+  if (mapFrame && !mapFrame.querySelector("iframe")) {
+    const q = encodeURIComponent("Rua da Glória, 72, Centro Cívico, Curitiba - PR, 80030-060");
+    const frame = document.createElement("iframe");
+    frame.src = "https://www.google.com/maps?q=" + q + "&z=16&output=embed";
+    frame.title = "Mapa — AK Soluções em Tecnologia";
+    frame.loading = "lazy";
+    frame.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+    frame.setAttribute("allowfullscreen", "");
+    mapFrame.appendChild(frame);
+  }
+
   if (window.lucide) {
     window.lucide.createIcons();
   }
+
+  // HikaShop's mini-cart returns text such as "2 itens". Keep only the
+  // quantity in the header badge and repeat this after its AJAX refreshes.
+  document.querySelectorAll(".btn-cart__count").forEach((badge) => {
+    const refreshCartBadge = () => {
+      const label = badge.querySelector(".hikashop_small_cart_total_title");
+      if (!label) return;
+
+      const quantity = label.textContent.match(/\d+/);
+      if (!quantity) return;
+
+      if (label.textContent.trim() !== quantity[0]) {
+        label.textContent = quantity[0];
+      }
+      label.setAttribute("aria-label", `${quantity[0]} itens no carrinho`);
+    };
+
+    refreshCartBadge();
+    new MutationObserver(refreshCartBadge).observe(badge, { childList: true, subtree: true });
+  });
 })();

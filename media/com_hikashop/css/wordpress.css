@@ -1,0 +1,749 @@
+/**
+ * @package    HikaShop
+ * @version    6.5.0
+ * @author     hikashop.com
+ * @copyright  (C) 2010-2026 HIKARI SOFTWARE. All rights reserved.
+ * @license    GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+
+
+.hikashop-messages { margin-bottom: 16px; }
+.hikashop-message {
+	padding: 12px 16px;
+	border-radius: 4px;
+	margin-bottom: 8px;
+	font-size: 14px;
+	line-height: 1.5;
+}
+.hikashop-message-message,
+.hikashop-message-success {
+	background-color: #d4edda;
+	border: 1px solid #c3e6cb;
+	color: #155724;
+}
+.hikashop-message-warning {
+	background-color: #fff3cd;
+	border: 1px solid #ffeeba;
+	color: #856404;
+}
+.hikashop-message-error {
+	background-color: #f8d7da;
+	border: 1px solid #f5c6cb;
+	color: #721c24;
+}
+.hikashop-message-info {
+	background-color: #d1ecf1;
+	border: 1px solid #bee5eb;
+	color: #0c5460;
+}
+
+.hikashop-wp-container .hikashop_header_title { display: none; }
+
+
+.hikashop-admin-wrapper li,
+.hikashop-admin-wrapper dd { margin-bottom: 0; }
+.hikashop-admin-wrapper { max-width: 100%; }
+.hikashop-admin-wrapper .hk-container { padding: 10px 0; }
+.hikashop-admin-wrapper table.adminlist { width: 100%; border-collapse: collapse; }
+.hikashop-admin-wrapper table.adminlist th,
+.hikashop-admin-wrapper table.adminlist td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+
+
+.btn-group { display: inline-flex; border-radius: 4px; overflow: hidden; }
+.btn-group .btn,
+.btn-group label.btn { display: inline-block; padding: 4px 12px; margin: 0; border: 1px solid #ccc; background: #f5f5f5; color: #333; cursor: pointer; font-size: 13px; line-height: 1.6; text-decoration: none; }
+.btn-group .btn + .btn,
+.btn-group label.btn + label.btn { border-left: 0; }
+.btn-group .btn:first-child,
+.btn-group label.btn:first-child { border-radius: 4px 0 0 4px; }
+.btn-group .btn:last-child,
+.btn-group label.btn:last-child { border-radius: 0 4px 4px 0; }
+.btn-group label.btn.active.btn-success { background: #46a546; border-color: #46a546; color: #fff; }
+.btn-group label.btn.active.btn-danger { background: #bd362f; border-color: #bd362f; color: #fff; }
+.btn-group label.btn.active { background: #0073aa; border-color: #0073aa; color: #fff; }
+
+
+.btn-group-vertical { display: inline-flex; flex-direction: column; }
+.btn-group-vertical .btn { border-radius: 0; border-bottom: 0; }
+.btn-group-vertical .btn:first-child { border-radius: 4px 4px 0 0; }
+.btn-group-vertical .btn:last-child { border-radius: 0 0 4px 4px; border-bottom: 1px solid #ccc; }
+
+
+.float-end { float: right; }
+.float-start { float: left; }
+
+
+.btn-primary { background: #0073aa; border-color: #0073aa; color: #fff; padding: 4px 12px; border-radius: 4px; cursor: pointer; }
+.btn-success { background: #46a546; border-color: #46a546; color: #fff; padding: 4px 12px; border-radius: 4px; cursor: pointer; }
+
+
+.list-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 10px 0;
+	margin-top: 10px;
+	border-top: 1px solid #ddd;
+}
+.list-footer .limit {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 13px;
+	color: #50575e;
+}
+.list-footer .limit label {
+	margin: 0;
+	font-weight: normal;
+}
+.list-footer .limit select {
+	min-width: 60px;
+}
+.list-footer .counter {
+	font-size: 13px;
+	color: #50575e;
+}
+
+
+ul.pagination.hikashop_pagination {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 0;
+}
+ul.pagination .page-item .page-link {
+	display: inline-block;
+	padding: 4px 10px;
+	border: 1px solid #ddd;
+	border-left-width: 0;
+	background: #fff;
+	color: #0073aa;
+	text-decoration: none;
+	font-size: 13px;
+	line-height: 1.6;
+	cursor: pointer;
+}
+ul.pagination .page-item:first-child .page-link {
+	border-left-width: 1px;
+	border-radius: 3px 0 0 3px;
+}
+ul.pagination .page-item:last-child .page-link {
+	border-radius: 0 3px 3px 0;
+}
+ul.pagination .page-item .page-link:hover {
+	background: #f0f0f1;
+	color: #0073aa;
+}
+ul.pagination .page-item.active .page-link {
+	background: #0073aa;
+	border-color: #0073aa;
+	color: #fff;
+	cursor: default;
+}
+ul.pagination .page-item.disabled .page-link {
+	color: #a7aaad;
+	cursor: default;
+	background: #f6f7f7;
+}
+
+ul.pagination .page-item span.page-link {
+	cursor: default;
+}
+
+
+.pagination-toolbar .pagenav { padding: 4px 8px; color: #0073aa; text-decoration: none; }
+.pagination-toolbar a.pagenav:hover { text-decoration: underline; }
+.pagination-toolbar span.pagenav { color: #50575e; }
+
+
+#hikashop_edit_view {
+	width: 100%;
+}
+#hikashop_edit_view .CodeMirror {
+	width: 100%;
+	height: 680px;
+	border: 1px solid #ddd;
+}
+
+
+table#hikashop_view_listing div.pagination-toolbar span,
+table#hikashop_view_listing div.pagination-toolbar a {
+	height: auto;
+	border: none;
+	padding: 0;
+	font-weight: normal;
+}
+
+
+
+.hikashop-wp-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px;
+}
+.hikashop-wp-toolbar .hikashop-toolbar-separator {
+	width: 1px;
+	align-self: stretch;
+	background: #ccc;
+	margin: 0 4px;
+}
+
+
+.hikashop-wp-toolbar .hikabtn-default,
+.hikashop-wp-toolbar button.hikabtn-default,
+.hikashop-wp-toolbar a.hikabtn-default {
+	background: #f6f7f7;
+	border-color: #dcdcde;
+	color: #1d2327;
+}
+.hikashop-wp-toolbar .hikabtn-default:hover,
+.hikashop-wp-toolbar .hikabtn-default:focus {
+	background: #eef0f1;
+	border-color: #c8cbcf;
+	color: #1d2327;
+}
+.hikashop-wp-toolbar .hikabtn-default .dashicons { color: #1d2327; }
+
+
+.hikashop-wp-toolbar .button .dashicons,
+.hikashop-wp-toolbar a.button .dashicons,
+.hikashop-wp-toolbar button.button .dashicons {
+	line-height: 1;
+	vertical-align: text-bottom;
+}
+
+.hikashop-wp-toolbar .hikabtn-save,
+.hikashop-wp-toolbar button.hikabtn-save,
+.hikashop-wp-toolbar a.hikabtn-save {
+	background: #2c6e2b;
+	border-color: #2c6e2b;
+	color: #fff;
+}
+.hikashop-wp-toolbar .hikabtn-save:hover,
+.hikashop-wp-toolbar .hikabtn-save:focus {
+	background: #245a23;
+	border-color: #245a23;
+	color: #fff;
+}
+.hikashop-wp-toolbar .hikabtn-save .dashicons { color: #fff; }
+.hikashop-wp-toolbar .hikabtn-close,
+.hikashop-wp-toolbar button.hikabtn-close,
+.hikashop-wp-toolbar a.hikabtn-close {
+	background: #a02020;
+	border-color: #a02020;
+	color: #fff;
+}
+.hikashop-wp-toolbar .hikabtn-close:hover,
+.hikashop-wp-toolbar .hikabtn-close:focus {
+	background: #861a1a;
+	border-color: #861a1a;
+	color: #fff;
+}
+.hikashop-wp-toolbar .hikabtn-close .dashicons { color: #fff; }
+
+
+.icon-publish::before,
+.icon-unpublish::before {
+	font-family: dashicons;
+	font-size: 18px;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-publish::before { content: "\f177"; color: var(--success, #2c6e2b); } 
+.icon-unpublish::before { content: "\f530"; color: var(--danger, #a02020); } 
+
+
+.hikashop-wp-container .icon-user::before,
+.hikashop-wp-container .icon-lock::before,
+.hikashop-wp-container .icon-question-sign::before {
+	font-family: dashicons;
+	font-size: 16px;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.hikashop-wp-container .icon-user,
+.hikashop-wp-container .icon-lock,
+.hikashop-wp-container .icon-question-sign { font-style: normal; }
+.hikashop-wp-container .icon-user::before { content: "\f110"; } 
+.hikashop-wp-container .icon-lock::before { content: "\f160"; } 
+.hikashop-wp-container .icon-question-sign::before { content: "\f223"; } 
+
+
+.hikashop-wp-container .input-prepend,
+.hikashop-wp-container .input-append {
+	display: flex;
+	align-items: stretch;
+}
+.hikashop-wp-container .input-prepend.input-append {
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+}
+.hikashop-wp-container .input-prepend .add-on,
+.hikashop-wp-container .input-append .add-on {
+	display: flex;
+	align-items: center;
+	padding: 6px 10px;
+	font-size: 14px;
+	color: #50575e;
+	background-color: #f0f0f1;
+	border: 1px solid #8c8f94;
+	white-space: nowrap;
+}
+.hikashop-wp-container .input-prepend .add-on:first-child {
+	border-right: 0;
+	border-radius: 4px 0 0 4px;
+}
+.hikashop-wp-container .input-prepend input,
+.hikashop-wp-container .input-append input {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #8c8f94;
+	border-radius: 0;
+	box-sizing: border-box;
+}
+.hikashop-wp-container .input-prepend input:focus,
+.hikashop-wp-container .input-append input:focus {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+	outline: none;
+}
+.hikashop-wp-container .input-append .btn,
+.hikashop-wp-container .input-append a.btn {
+	border-radius: 0 4px 4px 0;
+	border-left: 0;
+	padding: 6px 10px;
+	display: flex;
+	align-items: center;
+}
+
+.hikashop-wp-container .input-small {
+	width: 100%;
+}
+
+
+.hikashop-wp-container .hikashop_checkout_login .control-group {
+	margin-bottom: 12px;
+}
+.hikashop-wp-container .hikashop_checkout_login .control-label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.hikashop-wp-container .hkform-horizontal .hkform-group {
+	margin-bottom: 12px;
+}
+.hikashop-wp-container .hkform-horizontal .hkcontrol-label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.hikashop-wp-container .element-invisible,
+.hikashop-admin-wrapper .element-invisible {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+
+
+.hikashop-wp-container .form-control,
+.hikashop-wp-container .form-select,
+.hikashop-wp-container .custom-select,
+.hikashop-wp-container .inputbox,
+.hikashop-admin-wrapper .form-control,
+.hikashop-admin-wrapper .form-select,
+.hikashop-admin-wrapper .custom-select,
+.hikashop-admin-wrapper .inputbox {
+	display: block;
+	width: 100%;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #333;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	box-sizing: border-box;
+}
+.hikashop-wp-container .form-control:focus,
+.hikashop-wp-container .form-select:focus,
+.hikashop-wp-container .custom-select:focus,
+.hikashop-wp-container .inputbox:focus,
+.hikashop-admin-wrapper .form-control:focus,
+.hikashop-admin-wrapper .form-select:focus,
+.hikashop-admin-wrapper .custom-select:focus,
+.hikashop-admin-wrapper .inputbox:focus {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+	outline: none;
+}
+.hikashop-wp-container select.form-control,
+.hikashop-wp-container .form-select,
+.hikashop-wp-container .custom-select,
+.hikashop-wp-container select.inputbox,
+.hikashop-admin-wrapper select.form-control,
+.hikashop-admin-wrapper .form-select,
+.hikashop-admin-wrapper .custom-select,
+.hikashop-admin-wrapper select.inputbox {
+	appearance: auto;
+	padding-right: 24px;
+	background-image: none;
+}
+.hikashop-wp-container textarea.form-control,
+.hikashop-wp-container textarea.inputbox,
+.hikashop-admin-wrapper textarea.form-control,
+.hikashop-admin-wrapper textarea.inputbox {
+	height: auto;
+	min-height: 60px;
+}
+.hikashop-wp-container .form-control[readonly],
+.hikashop-admin-wrapper .form-control[readonly] {
+	background-color: #f0f0f1;
+}
+.hikashop-wp-container .form-control[disabled],
+.hikashop-wp-container .form-select[disabled],
+.hikashop-wp-container .inputbox[disabled],
+.hikashop-admin-wrapper .form-control[disabled],
+.hikashop-admin-wrapper .form-select[disabled],
+.hikashop-admin-wrapper .inputbox[disabled] {
+	background-color: #f0f0f1;
+	opacity: .7;
+	cursor: not-allowed;
+}
+
+
+.hikashop-wp-container .form-control.hikashop_product_quantity_field,
+.hikashop-wp-container input.form-control[type="number"],
+.hikashop-admin-wrapper .form-control.hikashop_product_quantity_field,
+.hikashop-admin-wrapper input.form-control[type="number"] {
+	display: inline-block;
+	width: auto;
+}
+
+
+.hikashop-wp-container .input-group,
+.hikashop-admin-wrapper .input-group {
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+}
+.hikashop-wp-container .input-group .form-control,
+.hikashop-wp-container .input-group .form-select,
+.hikashop-wp-container .input-group .inputbox,
+.hikashop-admin-wrapper .input-group .form-control,
+.hikashop-admin-wrapper .input-group .form-select,
+.hikashop-admin-wrapper .input-group .inputbox,
+.hikashop-admin-wrapper .input-group input[type="text"] {
+	flex: 1 1 auto;
+	width: 1%;
+	min-width: 0;
+	border-radius: 0;
+}
+.hikashop-wp-container .input-group > :first-child,
+.hikashop-admin-wrapper .input-group > :first-child {
+	border-radius: 4px 0 0 4px;
+}
+.hikashop-wp-container .input-group > :last-child,
+.hikashop-admin-wrapper .input-group > :last-child {
+	border-radius: 0 4px 4px 0;
+}
+.hikashop-wp-container .input-group-text,
+.hikashop-admin-wrapper .input-group-text {
+	display: flex;
+	align-items: center;
+	padding: 6px 12px;
+	font-size: 14px;
+	color: #333;
+	background-color: #f0f0f1;
+	border: 1px solid #8c8f94;
+	white-space: nowrap;
+}
+.hikashop-wp-container .input-group-append,
+.hikashop-wp-container .input-group-prepend,
+.hikashop-admin-wrapper .input-group-append,
+.hikashop-admin-wrapper .input-group-prepend {
+	display: flex;
+}
+.hikashop-wp-container .input-group > .btn,
+.hikashop-wp-container .input-group > button,
+.hikashop-wp-container .input-group-append .btn,
+.hikashop-wp-container .input-group-append button,
+.hikashop-admin-wrapper .input-group > .btn,
+.hikashop-admin-wrapper .input-group > button,
+.hikashop-admin-wrapper .input-group-append .btn,
+.hikashop-admin-wrapper .input-group-append button {
+	border-radius: 0 4px 4px 0;
+	border-left: 0;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	margin: 0;
+	box-sizing: border-box;
+	align-self: stretch;
+}
+.hikashop-wp-container .input-group-prepend .btn,
+.hikashop-wp-container .input-group-prepend button,
+.hikashop-admin-wrapper .input-group-prepend .btn,
+.hikashop-admin-wrapper .input-group-prepend button {
+	border-radius: 4px 0 0 4px;
+	border-right: 0;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	margin: 0;
+	box-sizing: border-box;
+	align-self: stretch;
+}
+
+
+.hikashop-admin-wrapper .input-group.hikashop_search_listing {
+	float: right;
+	width: auto;
+	max-width: 800px;
+}
+.hikashop-admin-wrapper .hikashop_search_listing .hikashop_search_btn {
+	margin-right: 0;
+}
+.hikashop-admin-wrapper .hikashop_search_listing .hikashop_search_btn .btn {
+	border-radius: 0;
+}
+.hikashop-admin-wrapper .hikashop_search_listing .hikashop_search_option {
+	display: flex;
+}
+.hikashop-admin-wrapper .hikashop_search_listing .hikashop_search_option .btn {
+	border-radius: 0;
+	border-left: 0;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	margin: 0;
+	box-sizing: border-box;
+	align-self: stretch;
+	white-space: nowrap;
+}
+.hikashop-admin-wrapper .hikashop_search_listing .hikashop_search_clear {
+	position: static;
+	left: auto;
+}
+.hikashop-admin-wrapper .hikashop_search_listing .hikashop_search_clear .btn {
+	border-radius: 0 4px 4px 0;
+	border-left: 0;
+}
+
+
+.hikashop-wp-container .control-group {
+	margin-bottom: 12px;
+}
+.hikashop-wp-container .control-label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+	font-size: 14px;
+}
+.hikashop-wp-container .controls {
+	position: relative;
+}
+
+
+:where(.hikashop-wp-container, .hikashop-admin-wrapper) :is(.hikabtn, .btn) {
+	display: inline-block;
+	padding: 6px 16px;
+	font-size: 14px;
+	line-height: 1.5;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	background: #f0f0f1;
+	color: #333;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+:where(.hikashop-wp-container, .hikashop-admin-wrapper) :is(.hikabtn, .btn):hover { background: #e2e2e3; }
+
+.hikashop-wp-container .btn-primary, .hikashop-admin-wrapper .btn-primary { background: #2271b1; border-color: #2271b1; color: #fff; }
+.hikashop-wp-container .btn-primary:hover, .hikashop-admin-wrapper .btn-primary:hover { background: #135e96; border-color: #135e96; color: #fff; }
+.hikashop-wp-container .btn-success, .hikashop-admin-wrapper .btn-success { background: #00a32a; border-color: #00a32a; color: #fff; }
+.hikashop-wp-container .btn-success:hover, .hikashop-admin-wrapper .btn-success:hover { background: #008a20; border-color: #008a20; color: #fff; }
+.hikashop-wp-container .btn-danger, .hikashop-admin-wrapper .btn-danger { background: #d63638; border-color: #d63638; color: #fff; }
+.hikashop-wp-container .btn-danger:hover, .hikashop-admin-wrapper .btn-danger:hover { background: #b32d2e; border-color: #b32d2e; color: #fff; }
+.hikashop-wp-container .btn-secondary, .hikashop-admin-wrapper .btn-secondary { background: #f0f0f1; border-color: #8c8f94; color: #333; }
+.hikashop-wp-container .btn-secondary:hover, .hikashop-admin-wrapper .btn-secondary:hover { background: #e2e2e3; }
+.hikashop-wp-container .btn-link, .hikashop-admin-wrapper .btn-link { background: none; border: none; color: #2271b1; padding: 0; text-decoration: underline; }
+.hikashop-wp-container .btn-link:hover, .hikashop-admin-wrapper .btn-link:hover { color: #135e96; }
+
+
+.hikashop-wp-container .alert,
+.hikashop_main_content .alert {
+	padding: 12px 16px;
+	margin-bottom: 16px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	font-size: 14px;
+}
+.hikashop-wp-container .alert-success,
+.hikashop_main_content .alert-success { background: #edfaef; border-color: #b8e6bf; color: #0a5c1a; }
+.hikashop-wp-container .alert-danger,
+.hikashop-wp-container .alert-error,
+.hikashop_main_content .alert-danger,
+.hikashop_main_content .alert-error { background: #fcf0f1; border-color: #f0c1c3; color: #8a1e22; }
+.hikashop-wp-container .alert-warning,
+.hikashop_main_content .alert-warning { background: #fff8e5; border-color: #f0d67a; color: #6e4e00; }
+.hikashop-wp-container .alert-info,
+.hikashop_main_content .alert-info { background: #f0f6fc; border-color: #b8d4ee; color: #1a4d80; }
+
+
+.hikashop-wp-container .form-check {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 4px;
+}
+.hikashop-wp-container .form-check-input {
+	width: auto;
+	margin: 0;
+}
+.hikashop-wp-container .form-check-label {
+	font-weight: normal;
+	margin: 0;
+}
+
+
+.hikashop-wp-container table.table,
+.hikashop-wp-container table.adminlist,
+.hikashop-admin-wrapper table.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.hikashop-wp-container table.table th,
+.hikashop-wp-container table.table td,
+.hikashop-wp-container table.adminlist th,
+.hikashop-wp-container table.adminlist td,
+.hikashop-admin-wrapper table.table th,
+.hikashop-admin-wrapper table.table td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+.hikashop-wp-container table.table thead th,
+.hikashop-admin-wrapper table.table thead th {
+	border-bottom-width: 2px;
+	font-weight: 600;
+}
+
+.hikashop-wp-container table.table-bordered,
+.hikashop-admin-wrapper table.table-bordered {
+	border: 1px solid #ddd;
+}
+.hikashop-wp-container table.table-bordered th,
+.hikashop-wp-container table.table-bordered td,
+.hikashop-admin-wrapper table.table-bordered th,
+.hikashop-admin-wrapper table.table-bordered td {
+	border: 1px solid #ddd;
+}
+
+.hikashop-wp-container table.table-striped > tbody > tr:nth-child(odd),
+.hikashop-admin-wrapper table.table-striped > tbody > tr:nth-child(odd) {
+	background-color: #f9f9f9;
+}
+
+.hikashop-wp-container table.table-hover > tbody > tr:hover,
+.hikashop-admin-wrapper table.table-hover > tbody > tr:hover {
+	background-color: #f0f0f1;
+}
+
+
+#hikashop_main_content {
+	--success: #2c6e2b;
+	--danger: #a02020;
+}
+
+.editor-styles-wrapper .hikashop_cart_dropdown_container { display: none; }
+
+.editor-styles-wrapper .owl-carousel {
+	display: flex !important;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.editor-styles-wrapper .owl-carousel .hikashop_carousel_item {
+	flex: 1 1 calc(25% - 8px);
+	min-width: 150px;
+}
+.editor-styles-wrapper .swiper-wrapper {
+	display: flex !important;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.editor-styles-wrapper .swiper-slide {
+	flex: 1 1 calc(25% - 8px);
+	min-width: 150px;
+}
+
+.editor-styles-wrapper .hikashop-block-empty-placeholder {
+	padding: 16px;
+	text-align: center;
+	border: 1px dashed #c4c4c4;
+	border-radius: 4px;
+	background: #f9f9f9;
+	color: #757575;
+	font-style: italic;
+}
+.editor-styles-wrapper .hikashop-block-empty-placeholder__label {
+	display: block;
+	font-size: 13px;
+}
+
+
+.hikashop-admin-wrapper table.admintable td.key {
+	white-space: normal;
+	max-width: 300px;
+}
+.hikashop-admin-wrapper table.admintable td.key small {
+	display: block;
+	font-weight: normal;
+	color: #666;
+	margin-top: 2px;
+}
+
+body.admin-bar .hikashop_drawer__wrapper,
+body.admin-bar .hikashop_drawer__overlay {
+	top: 32px;
+	height: calc(100% - 32px);
+}
+body.admin-bar .notifyjs-corner {
+	top: 32px !important;
+}
+@media screen and (max-width: 782px) {
+	body.admin-bar .hikashop_drawer__wrapper,
+	body.admin-bar .hikashop_drawer__overlay {
+		top: 46px;
+		height: calc(100% - 46px);
+	}
+	body.admin-bar .notifyjs-corner {
+		top: 46px !important;
+	}
+}

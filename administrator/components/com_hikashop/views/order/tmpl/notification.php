@@ -1,0 +1,47 @@
+<?php
+/**
+ * @package	HikaShop
+ * @version	6.5.0
+ * @author	hikashop.com
+ * @copyright	(C) 2010-2026 HIKARI SOFTWARE. All rights reserved.
+ * @license	GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ */
+defined('_JEXEC') or defined('ABSPATH') or die('Restricted access');
+// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+?>		<tr>
+			<td class="key">
+				<label for="data[order][history][history_reason]">
+					<?php echo JText::_( 'MODIFICATION_REASON' ); ?>
+				</label>
+			</td>
+			<td>
+				<textarea cols="60" rows="5" name="data[order][history][history_reason]"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td class="key">
+				<label for="data[order][history][history_notified]">
+					<?php echo JText::_( 'NOTIFY_CUSTOMER' ); ?>
+				</label>
+			</td>
+			<td>
+				<?php 
+				$this->config = hikashop_config();
+				$default_notify = 1;
+				$display_area = '';
+				if(!$this->config->get('order_notify_customer_default',0)) {
+					$default_notify = 0;
+					$display_area = ' style="display:none"';
+				}
+				echo JHTML::_('hikaselect.booleanlist', "data[order][history][history_notified]" , 'onchange="var display=\'none\'; if(this.value==1)display=\'\';document.getElementById(\'notification_area\').style.display=display;"',$default_notify);
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" id="notification_area"<?php echo $display_area; ?>>
+				<fieldset class="adminform" id="htmlfieldset">
+					<legend><?php echo JText::_( 'NOTIFICATION' ); ?></legend>
+					<?php $this->setLayout('mailform'); echo $this->loadTemplate();?>
+				</fieldset>
+			</td>
+		</tr>
