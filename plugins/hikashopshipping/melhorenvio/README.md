@@ -16,7 +16,7 @@ Cadastre como callback OAuth no aplicativo:
 https://SEU-DOMINIO/index.php?option=com_ajax&plugin=melhorenvio&group=hikashopshipping&format=json&action=callback&shipping_id=ID
 ```
 
-Para iniciar a autorização, um administrador autenticado acessa a mesma rota com `action=authorize` e o token CSRF GET; a resposta contém `authorization_url`.
+Na configuração do método de frete, clique em **Autorizar com Melhor Envio**. O plugin cria um estado de uso único, válido por 15 minutos, e abre a autorização no Melhor Envio. Isso funciona mesmo quando o Joomla mantém sessões separadas para o administrador e para o site.
 
 Cadastre o webhook com o segredo do aplicativo:
 

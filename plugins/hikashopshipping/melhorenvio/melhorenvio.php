@@ -51,6 +51,7 @@ class plgHikashopshippingMelhorenvio extends hikashopShippingPlugin
 		'client_id' => array('PLG_HIKASHOPSHIPPING_MELHORENVIO_CLIENT_ID', 'input'),
 		'client_secret' => array('PLG_HIKASHOPSHIPPING_MELHORENVIO_CLIENT_SECRET', 'input'),
 		'client_secret_env' => array('PLG_HIKASHOPSHIPPING_MELHORENVIO_CLIENT_SECRET_ENV', 'input'),
+		'oauth_authorize' => array('PLG_HIKASHOPSHIPPING_MELHORENVIO_OAUTH_AUTHORIZE', 'oauth_authorize'),
 		'support_email' => array('PLG_HIKASHOPSHIPPING_MELHORENVIO_SUPPORT_EMAIL', 'input'),
 		'services' => array('PLG_HIKASHOPSHIPPING_MELHORENVIO_SERVICES', 'input'),
 		'trigger_statuses' => array('PLG_HIKASHOPSHIPPING_MELHORENVIO_TRIGGER_STATUSES', 'input'),
@@ -91,6 +92,61 @@ class plgHikashopshippingMelhorenvio extends hikashopShippingPlugin
 		$element->shipping_params->district_field = 'address_neighborhood';
 		$element->shipping_params->additional_days = 0;
 		$element->shipping_params->additional_price = 0;
+	}
+
+	/**
+	 * Starts OAuth from the administrator application. Joomla is configured with
+	 * separate frontend and administrator sessions, so this cannot rely on the
+	 * public com_ajax authorization endpoint being authenticated.
+	 */
+	public function onShippingConfiguration(&$element)
+	{
+		$app = Factory::getApplication();
+
+		if ($app->input->getCmd('melhorenvio_action') === 'authorize') {
+			$this->assertAdministrator();
+			Session::checkToken('get') or throw new RuntimeException(Text::_('JINVALID_TOKEN'), 403);
+
+			$shippingId = $app->input->getInt('shipping_id');
+			if ($shippingId < 1 || $shippingId !== (int) ($element->shipping_id ?? 0)) {
+				throw new RuntimeException('Método de frete Melhor Envio não encontrado.', 404);
+			}
+
+			$app->redirect($this->authorizationUrl($shippingId));
+			return;
+		}
+
+		parent::onShippingConfiguration($element);
+	}
+
+	public function pluginConfigDisplay($fieldType, $data, $type, $paramsType, $key, $element)
+	{
+		if ($fieldType !== 'oauth_authorize') {
+			return '';
+		}
+
+		$shippingId = (int) ($element->shipping_id ?? 0);
+		if ($shippingId < 1) {
+			return '<p>' . htmlspecialchars(Text::_('PLG_HIKASHOPSHIPPING_MELHORENVIO_OAUTH_SAVE_FIRST'), ENT_QUOTES, 'UTF-8') . '</p>';
+		}
+
+		$url = Uri::base() . 'index.php?' . http_build_query(array(
+			'option' => 'com_hikashop',
+			'ctrl' => 'plugins',
+			'plugin_type' => 'shipping',
+			'task' => 'edit',
+			'name' => $this->name,
+			'subtask' => 'shipping_edit',
+			'shipping_id' => $shippingId,
+			'melhorenvio_action' => 'authorize',
+			Session::getFormToken() => '1',
+		));
+
+		return '<a class="btn btn-primary" href="' . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . '">'
+			. htmlspecialchars(Text::_('PLG_HIKASHOPSHIPPING_MELHORENVIO_OAUTH_AUTHORIZE_BUTTON'), ENT_QUOTES, 'UTF-8')
+			. '</a><p class="small text-muted">'
+			. htmlspecialchars(Text::_('PLG_HIKASHOPSHIPPING_MELHORENVIO_OAUTH_AUTHORIZE_DESC'), ENT_QUOTES, 'UTF-8')
+			. '</p>';
 	}
 
 	public function shippingMethods(&$main)
@@ -548,8 +604,7 @@ class plgHikashopshippingMelhorenvio extends hikashopShippingPlugin
 	protected function authorizationUrl($shippingId)
 	{
 		$params = $this->loadMethodParams($shippingId);
-		$state = bin2hex(random_bytes(32));
-		Factory::getApplication()->getSession()->set('ak.me.oauth.' . $shippingId, $state);
+		$state = $this->repository()->createOAuthState((int) $shippingId);
 
 		return $this->client($shippingId, $params)->authorizationUrl(
 			$this->callbackUrl($shippingId),
@@ -560,15 +615,13 @@ class plgHikashopshippingMelhorenvio extends hikashopShippingPlugin
 	protected function handleOAuthCallback($shippingId)
 	{
 		$app = Factory::getApplication();
-		$expected = (string) $app->getSession()->get('ak.me.oauth.' . $shippingId, '');
 		$state = $app->input->getString('state');
 		$code = $app->input->getString('code');
 
-		if ($expected === '' || !hash_equals($expected, $state) || $code === '') {
+		if ($code === '' || !$this->repository()->consumeOAuthState((int) $shippingId, $state)) {
 			throw new RuntimeException('Retorno OAuth inválido.', 403);
 		}
 
-		$app->getSession()->clear('ak.me.oauth.' . $shippingId);
 		$params = $this->loadMethodParams($shippingId);
 		$tokens = $this->client($shippingId, $params)->exchangeAuthorizationCode($code, $this->callbackUrl($shippingId));
 		$this->repository()->saveTokens($shippingId, (string) $params->environment, $tokens);

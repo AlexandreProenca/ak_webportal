@@ -37,6 +37,65 @@ final class Repository
 		}
 	}
 
+	/**
+	 * Persist a short-lived, one-time OAuth state. This table already records
+	 * webhook events and is available on all installed plugin versions, avoiding
+	 * a dependency on shared Joomla frontend/administrator sessions.
+	 */
+	public function createOAuthState(int $shippingId): string
+	{
+		if ($shippingId < 1) {
+			throw new RuntimeException('Método de frete Melhor Envio não encontrado.');
+		}
+
+		$cutoff = gmdate('Y-m-d H:i:s', time() - 900);
+		$cleanup = $this->database->getQuery(true)
+			->delete($this->database->quoteName('#__ak_me_events'))
+			->where($this->database->quoteName('event_name') . ' = :event_name')
+			->where($this->database->quoteName('created_at') . ' < :cutoff')
+			->bind(':event_name', 'oauth_state')
+			->bind(':cutoff', $cutoff);
+		$this->database->setQuery($cleanup)->execute();
+
+		$state = bin2hex(random_bytes(32));
+		$row = (object) array(
+			'event_hash' => hash('sha256', $state),
+			'event_name' => 'oauth_state',
+			'external_id' => (string) $shippingId,
+			'payload_json' => '{}',
+			'created_at' => gmdate('Y-m-d H:i:s'),
+		);
+		$this->database->insertObject('#__ak_me_events', $row, 'id');
+
+		return $state;
+	}
+
+	public function consumeOAuthState(int $shippingId, string $state): bool
+	{
+		if ($shippingId < 1 || !preg_match('/^[a-f0-9]{64}$/', $state)) {
+			return false;
+		}
+
+		$now = gmdate('Y-m-d H:i:s');
+		$cutoff = gmdate('Y-m-d H:i:s', time() - 900);
+		$query = $this->database->getQuery(true)
+			->update($this->database->quoteName('#__ak_me_events'))
+			->set($this->database->quoteName('processed_at') . ' = :processed_at')
+			->where($this->database->quoteName('event_hash') . ' = :event_hash')
+			->where($this->database->quoteName('event_name') . ' = :event_name')
+			->where($this->database->quoteName('external_id') . ' = :external_id')
+			->where($this->database->quoteName('processed_at') . ' IS NULL')
+			->where($this->database->quoteName('created_at') . ' >= :cutoff')
+			->bind(':processed_at', $now)
+			->bind(':event_hash', hash('sha256', $state))
+			->bind(':event_name', 'oauth_state')
+			->bind(':external_id', (string) $shippingId)
+			->bind(':cutoff', $cutoff);
+		$this->database->setQuery($query)->execute();
+
+		return $this->database->getAffectedRows() === 1;
+	}
+
 	public function getTokens(int $shippingId): ?array
 	{
 		$row = $this->getCredentialRow($shippingId);
