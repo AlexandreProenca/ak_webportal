@@ -34,13 +34,13 @@ class plgHikashopshippingMelhorenvio extends hikashopShippingPlugin
 
 	/**
 	 * HikaShop renders these labels through Joomla's language service. Load the
-	 * plugin language explicitly because HikaShop imports legacy shipping
-	 * plugins outside Joomla's normal event bootstrap.
+	 * plugin language from its installed directory because HikaShop imports
+	 * legacy shipping plugins outside Joomla's normal event bootstrap.
 	 */
 	public function __construct(&$subject, $config)
 	{
 		parent::__construct($subject, $config);
-		$this->loadLanguage('plg_hikashopshipping_melhorenvio', JPATH_ADMINISTRATOR);
+		Factory::getLanguage()->load('plg_hikashopshipping_melhorenvio', __DIR__, null, true);
 	}
 
 	public $pluginConfig = array(
