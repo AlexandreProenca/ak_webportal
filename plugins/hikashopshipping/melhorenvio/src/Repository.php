@@ -77,20 +77,17 @@ final class Repository
 			return false;
 		}
 
-		$now = gmdate('Y-m-d H:i:s');
 		$cutoff = gmdate('Y-m-d H:i:s', time() - 900);
 		$stateHash = hash('sha256', $state);
 		$eventName = 'oauth_state';
 		$externalId = (string) $shippingId;
 		$query = $this->database->getQuery(true)
-			->update($this->database->quoteName('#__ak_me_events'))
-			->set($this->database->quoteName('processed_at') . ' = :processed_at')
+			->delete($this->database->quoteName('#__ak_me_events'))
 			->where($this->database->quoteName('event_hash') . ' = :event_hash')
 			->where($this->database->quoteName('event_name') . ' = :event_name')
 			->where($this->database->quoteName('external_id') . ' = :external_id')
 			->where($this->database->quoteName('processed_at') . ' IS NULL')
 			->where($this->database->quoteName('created_at') . ' >= :cutoff')
-			->bind(':processed_at', $now)
 			->bind(':event_hash', $stateHash)
 			->bind(':event_name', $eventName)
 			->bind(':external_id', $externalId)
