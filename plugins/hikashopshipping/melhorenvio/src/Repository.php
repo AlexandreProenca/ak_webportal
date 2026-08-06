@@ -49,11 +49,12 @@ final class Repository
 		}
 
 		$cutoff = gmdate('Y-m-d H:i:s', time() - 900);
+		$eventName = 'oauth_state';
 		$cleanup = $this->database->getQuery(true)
 			->delete($this->database->quoteName('#__ak_me_events'))
 			->where($this->database->quoteName('event_name') . ' = :event_name')
 			->where($this->database->quoteName('created_at') . ' < :cutoff')
-			->bind(':event_name', 'oauth_state')
+			->bind(':event_name', $eventName)
 			->bind(':cutoff', $cutoff);
 		$this->database->setQuery($cleanup)->execute();
 
@@ -78,6 +79,9 @@ final class Repository
 
 		$now = gmdate('Y-m-d H:i:s');
 		$cutoff = gmdate('Y-m-d H:i:s', time() - 900);
+		$stateHash = hash('sha256', $state);
+		$eventName = 'oauth_state';
+		$externalId = (string) $shippingId;
 		$query = $this->database->getQuery(true)
 			->update($this->database->quoteName('#__ak_me_events'))
 			->set($this->database->quoteName('processed_at') . ' = :processed_at')
@@ -87,9 +91,9 @@ final class Repository
 			->where($this->database->quoteName('processed_at') . ' IS NULL')
 			->where($this->database->quoteName('created_at') . ' >= :cutoff')
 			->bind(':processed_at', $now)
-			->bind(':event_hash', hash('sha256', $state))
-			->bind(':event_name', 'oauth_state')
-			->bind(':external_id', (string) $shippingId)
+			->bind(':event_hash', $stateHash)
+			->bind(':event_name', $eventName)
+			->bind(':external_id', $externalId)
 			->bind(':cutoff', $cutoff);
 		$this->database->setQuery($query)->execute();
 

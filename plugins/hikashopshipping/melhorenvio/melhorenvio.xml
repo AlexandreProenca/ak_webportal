@@ -2,7 +2,7 @@
 <extension type="plugin" version="5.0" method="upgrade" group="hikashopshipping">
 	<name>PLG_HIKASHOPSHIPPING_MELHORENVIO</name>
 	<creationDate>August 2026</creationDate>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 	<author>AK Soluções</author>
 	<authorEmail>contato@aksolucoes.com.br</authorEmail>
 	<authorUrl>https://www.aksolucoes.com.br</authorUrl>
