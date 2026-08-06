@@ -13,7 +13,7 @@ Os produtos físicos precisam de SKU, preço unitário, peso e dimensões. No Hi
 Cadastre como callback OAuth no aplicativo:
 
 ```text
-https://SEU-DOMINIO/index.php?option=com_ajax&plugin=melhorenvio&group=hikashopshipping&format=json&action=callback&shipping_id=ID
+https://SEU-DOMINIO/plugins/hikashopshipping/melhorenvio/oauth-callback.php?shipping_id=ID
 ```
 
 Na configuração do método de frete, clique em **Autorizar com Melhor Envio**. O plugin cria um estado de uso único, válido por 15 minutos, e abre a autorização no Melhor Envio. Isso funciona mesmo quando o Joomla mantém sessões separadas para o administrador e para o site.

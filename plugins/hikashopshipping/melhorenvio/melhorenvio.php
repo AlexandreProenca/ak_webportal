@@ -676,7 +676,7 @@ class plgHikashopshippingMelhorenvio extends hikashopShippingPlugin
 
 	protected function callbackUrl($shippingId)
 	{
-		return Uri::root() . 'index.php?option=com_ajax&plugin=melhorenvio&group=hikashopshipping&format=json&action=callback&shipping_id=' . (int) $shippingId;
+		return Uri::root() . 'plugins/hikashopshipping/melhorenvio/oauth-callback.php?shipping_id=' . (int) $shippingId;
 	}
 
 	protected function saveHikaTracking($orderId, $tracking)
